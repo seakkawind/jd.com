@@ -1,0 +1,273 @@
+@import '../css/reset.css';
+.wrapper {
+  width: 990px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+a:hover {
+  color: #e4393c;
+  text-decoration: underline;
+}
+.active {
+  display: none;
+  color: #e4393c;
+}
+header {
+  .wrapper {
+    .logo {
+      width: 300px;
+      height: 60px;
+      float: left;
+      overflow: hidden;
+      padding: 10px;
+      .img {
+        width: 170px;
+        height: 60px;
+      }
+      > span {
+        font-size: 2em;
+        float: right;
+        font-weight: bold;
+        display: block;
+        margin-top: 25px;
+      }
+    }
+    .survey {
+      float: right;
+      overflow: hidden;
+      margin-top: 50px;
+      > i {
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        background: url(../img/signIn/q-icon.png) no-repeat;
+      }
+    }
+  }
+  .tips {
+    background-color: #fff8f0;
+    p {
+      text-align: center;
+      color: #ccc;
+      height: 35px;
+      line-height: 35px;
+    }
+  }
+}
+main {
+  background: url(../img/signIn/bg.jpg) 180px 0px no-repeat;
+  background-color: #2ab2ba;
+  height: 475px;
+  .wrapper {
+    .signin-form {
+      background-color: #fff;
+      width: 350px;
+      float: right;
+      margin-top: 10px;
+      .tips {
+        background-color: #fff8f0;
+        p {
+          text-align: center;
+          color: #ccc;
+          height: 35px;
+          line-height: 35px;
+        }
+      }
+      .signin-tab {
+        display: flex;
+        text-align: center;
+        font-size: 1.5em;
+        color: #999;
+        height: 50px;
+        border-bottom: 1px solid #d4d4d4;
+        .btn-left {
+          width: 50%;
+          line-height: 50px;
+          color: #e4393c;
+
+          cursor: pointer;
+          user-select: none;
+          &:hover {
+            color: #e4393c;
+            font-weight: bolder;
+          }
+        }
+        .btn-right {
+          cursor: pointer;
+          user-select: none;
+          width: 50%;
+          line-height: 50px;
+          &:hover {
+            color: #e4393c;
+            font-weight: bolder;
+          }
+        }
+      }
+      .signin {
+        padding: 20px;
+        .inp {
+          margin-top: 20px;
+          border: 1px solid #d4d4d4;
+          display: flex;
+          i {
+            background: url(../img/signIn/pwd-icons-new.png) no-repeat;
+            width: 12.5%;
+            height: 38px;
+            border-right: 1px solid #d4d4d4;
+          }
+          &:nth-child(2) {
+            i {
+              background: url(../img/signIn/pwd-icons-new.png) -48px 0px no-repeat;
+            }
+          }
+          input {
+            border-style: none;
+            width: 80%;
+            color: #d4d4d4;
+            text-indent: 1em;
+          }
+        }
+        .forget {
+          overflow: hidden;
+          height: 50px;
+          a {
+            display: block;
+            float: right;
+            height: 50px;
+            line-height: 50px;
+          }
+        }
+        .submit {
+          cursor: pointer;
+          width: 100%;
+          border-style: none;
+          background-color: #e4393c;
+          color: #fff;
+          font-size: 1.7em;
+          font-weight: bolder;
+          height: 35px;
+          line-height: 35px;
+        }
+      }
+      .signin-code {
+        padding: 20px;
+        padding-bottom: 0px;
+        .code {
+          height: 200px;
+          position: relative;
+          .code-left {
+            width: 150px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            position: absolute;
+            left: 70px; //70
+          }
+          .code-right {
+            position: absolute;
+            left: 180px;
+            display: none;
+          }
+        }
+        > p {
+          text-align: center;
+          b {
+            color: #e4393c;
+            cursor: pointer;
+          }
+        }
+        > ul {
+          display: flex;
+          justify-content: center;
+          li {
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            height: 64px;
+            line-height: 64px;
+            i {
+              width: 25px;
+              height: 25px;
+              margin-top: 20px;
+              margin-right: 5px;
+            }
+            &:nth-child(1) {
+              i {
+                background: url(../img/signIn/qr-coagent.png) no-repeat;
+              }
+            }
+            &:nth-child(2) {
+              i {
+                background: url(../img/signIn/qr-coagent.png)-27px 0px no-repeat;
+              }
+            }
+            &:nth-child(3) {
+              i {
+                background: url(../img/signIn/qr-coagent.png)-54px 0px no-repeat;
+              }
+            }
+          }
+        }
+      }
+      .other {
+        overflow: hidden;
+        background-color: #fcfcfc;
+        margin-top: 15px;
+        > li {
+          height: 50px;
+          float: left;
+          width: 20%;
+          display: flex;
+          justify-content: center;
+          line-height: 50px;
+          > i {
+            margin-top: 15px;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+          }
+        }
+        .qq {
+          > i {
+            background: url(../img/signIn/QQ-weixin.png) no-repeat;
+          }
+        }
+        .wx {
+          > i {
+            background: url(../img/signIn/QQ-weixin.png) -20px 0px no-repeat;
+          }
+        }
+        .signup {
+          width: 40%;
+          float: right;
+          color: #e4393c;
+          font-size: 1.2em;
+          > i {
+            background: url(../img/signIn/pwd-icons-new.png) -100px -74px
+              no-repeat;
+          }
+        }
+      }
+    }
+  }
+}
+footer {
+  .wrapper {
+    .links {
+      display: flex;
+      justify-content: space-between;
+      li {
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        span {
+          margin-left: 20px;
+        }
+      }
+    }
+    .copyright {
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+}

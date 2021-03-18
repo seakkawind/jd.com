@@ -1,0 +1,249 @@
+@import '../css/reset.css';
+.wrapper {
+  width: 990px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+a:hover {
+  color: #e4393c;
+  text-decoration: underline;
+}
+.active {
+  display: none;
+  color: #e4393c;
+}
+header .wrapper .logo {
+  width: 300px;
+  height: 60px;
+  float: left;
+  overflow: hidden;
+  padding: 10px;
+}
+header .wrapper .logo .img {
+  width: 170px;
+  height: 60px;
+}
+header .wrapper .logo > span {
+  font-size: 2em;
+  float: right;
+  font-weight: bold;
+  display: block;
+  margin-top: 25px;
+}
+header .wrapper .survey {
+  float: right;
+  overflow: hidden;
+  margin-top: 50px;
+}
+header .wrapper .survey > i {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background: url(../img/signIn/q-icon.png) no-repeat;
+}
+header .tips {
+  background-color: #fff8f0;
+}
+header .tips p {
+  text-align: center;
+  color: #ccc;
+  height: 35px;
+  line-height: 35px;
+}
+main {
+  background: url(../img/signIn/bg.jpg) 180px 0px no-repeat;
+  background-color: #2ab2ba;
+  height: 475px;
+}
+main .wrapper .signin-form {
+  background-color: #fff;
+  width: 350px;
+  float: right;
+  margin-top: 10px;
+}
+main .wrapper .signin-form .tips {
+  background-color: #fff8f0;
+}
+main .wrapper .signin-form .tips p {
+  text-align: center;
+  color: #ccc;
+  height: 35px;
+  line-height: 35px;
+}
+main .wrapper .signin-form .signin-tab {
+  display: flex;
+  text-align: center;
+  font-size: 1.5em;
+  color: #999;
+  height: 50px;
+  border-bottom: 1px solid #d4d4d4;
+}
+main .wrapper .signin-form .signin-tab .btn-left {
+  width: 50%;
+  line-height: 50px;
+  color: #e4393c;
+  cursor: pointer;
+  user-select: none;
+}
+main .wrapper .signin-form .signin-tab .btn-left:hover {
+  color: #e4393c;
+  font-weight: bolder;
+}
+main .wrapper .signin-form .signin-tab .btn-right {
+  cursor: pointer;
+  user-select: none;
+  width: 50%;
+  line-height: 50px;
+}
+main .wrapper .signin-form .signin-tab .btn-right:hover {
+  color: #e4393c;
+  font-weight: bolder;
+}
+main .wrapper .signin-form .signin {
+  padding: 20px;
+}
+main .wrapper .signin-form .signin .inp {
+  margin-top: 20px;
+  border: 1px solid #d4d4d4;
+  display: flex;
+}
+main .wrapper .signin-form .signin .inp i {
+  background: url(../img/signIn/pwd-icons-new.png) no-repeat;
+  width: 12.5%;
+  height: 38px;
+  border-right: 1px solid #d4d4d4;
+}
+main .wrapper .signin-form .signin .inp:nth-child(2) i {
+  background: url(../img/signIn/pwd-icons-new.png) -48px 0px no-repeat;
+}
+main .wrapper .signin-form .signin .inp input {
+  border-style: none;
+  width: 80%;
+  color: #d4d4d4;
+  text-indent: 1em;
+}
+main .wrapper .signin-form .signin .forget {
+  overflow: hidden;
+  height: 50px;
+}
+main .wrapper .signin-form .signin .forget a {
+  display: block;
+  float: right;
+  height: 50px;
+  line-height: 50px;
+}
+main .wrapper .signin-form .signin .submit {
+  cursor: pointer;
+  width: 100%;
+  border-style: none;
+  background-color: #e4393c;
+  color: #fff;
+  font-size: 1.7em;
+  font-weight: bolder;
+  height: 35px;
+  line-height: 35px;
+}
+main .wrapper .signin-form .signin-code {
+  padding: 20px;
+  padding-bottom: 0px;
+}
+main .wrapper .signin-form .signin-code .code {
+  height: 200px;
+  position: relative;
+}
+main .wrapper .signin-form .signin-code .code .code-left {
+  width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: 70px;
+}
+main .wrapper .signin-form .signin-code .code .code-right {
+  position: absolute;
+  left: 180px;
+  display: none;
+}
+main .wrapper .signin-form .signin-code > p {
+  text-align: center;
+}
+main .wrapper .signin-form .signin-code > p b {
+  color: #e4393c;
+  cursor: pointer;
+}
+main .wrapper .signin-form .signin-code > ul {
+  display: flex;
+  justify-content: center;
+}
+main .wrapper .signin-form .signin-code > ul li {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  height: 64px;
+  line-height: 64px;
+}
+main .wrapper .signin-form .signin-code > ul li i {
+  width: 25px;
+  height: 25px;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+main .wrapper .signin-form .signin-code > ul li:nth-child(1) i {
+  background: url(../img/signIn/qr-coagent.png) no-repeat;
+}
+main .wrapper .signin-form .signin-code > ul li:nth-child(2) i {
+  background: url(../img/signIn/qr-coagent.png) -27px 0px no-repeat;
+}
+main .wrapper .signin-form .signin-code > ul li:nth-child(3) i {
+  background: url(../img/signIn/qr-coagent.png) -54px 0px no-repeat;
+}
+main .wrapper .signin-form .other {
+  overflow: hidden;
+  background-color: #fcfcfc;
+  margin-top: 15px;
+}
+main .wrapper .signin-form .other > li {
+  height: 50px;
+  float: left;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  line-height: 50px;
+}
+main .wrapper .signin-form .other > li > i {
+  margin-top: 15px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+main .wrapper .signin-form .other .qq > i {
+  background: url(../img/signIn/QQ-weixin.png) no-repeat;
+}
+main .wrapper .signin-form .other .wx > i {
+  background: url(../img/signIn/QQ-weixin.png) -20px 0px no-repeat;
+}
+main .wrapper .signin-form .other .signup {
+  width: 40%;
+  float: right;
+  color: #e4393c;
+  font-size: 1.2em;
+}
+main .wrapper .signin-form .other .signup > i {
+  background: url(../img/signIn/pwd-icons-new.png) -100px -74px no-repeat;
+}
+footer .wrapper .links {
+  display: flex;
+  justify-content: space-between;
+}
+footer .wrapper .links li {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+footer .wrapper .links li span {
+  margin-left: 20px;
+}
+footer .wrapper .copyright {
+  margin: 0 auto;
+  text-align: center;
+}
