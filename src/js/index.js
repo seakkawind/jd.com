@@ -1,5 +1,5 @@
 import { $ } from "./jquery.js"
-import Swiper from "../../node_modules/swiper/dist/js/swiper.js"
+import Swiper from "../../dist/js/swiper.js"
 //轮播图
 let mainSwiper = new Swiper('.main-banner', {
     loop: true,

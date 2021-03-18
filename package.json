@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "swiper": "^6.5.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
   }
 }
