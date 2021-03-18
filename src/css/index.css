@@ -1,5 +1,5 @@
 @import '../css/reset.css';
-@import '../../dist/css/swiper.css';
+@import '../../node_modules/swiper/dist/css/swiper.min.css';
 @import 'http://at.alicdn.com/t/font_2419230_u6q5v2rnknb.css';
 .wrapper {
   width: 1190px;
@@ -683,7 +683,7 @@ main .wrapper .spike .spike-banner .maxb .maxb-list .maxb-item > img {
 main .wrapper .spike .spike-banner .maxb .maxb-list .maxb-item > p {
   width: 100%;
   text-align: center;
-  margin: 15px 0 ;
+  margin: 15px 0;
 }
 main .wrapper .spike .spike-banner .maxb .maxb-list .maxb-item .maxb-item-price {
   width: 160px;
@@ -706,7 +706,7 @@ main .wrapper .spike .spike-banner .maxb .maxb-list .maxb-item .maxb-item-price 
   font-size: 1.2em;
 }
 main .wrapper .spike .spike-banner .maxb .maxb-list .maxb-item .maxb-item-price .price-l::before {
-  content: " ";
+  content: ' ';
   width: 0;
   height: 0;
   border-color: transparent white transparent transparent;
@@ -824,7 +824,7 @@ main .wrapper .contm .specials .tabs .tabs-list .hoverc a {
   color: #e1251b;
 }
 main .wrapper .contm .specials .tabs .tabs-list .hoverc a::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1294,7 +1294,7 @@ main .wrapper .channel .channel-tit {
   margin-bottom: 20px;
 }
 main .wrapper .channel .channel-tit::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 5px;
   left: 450px;
@@ -1305,7 +1305,7 @@ main .wrapper .channel .channel-tit::after {
   background-size: 110%;
 }
 main .wrapper .channel .channel-tit::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 5px;
   right: 450px;
@@ -1389,7 +1389,7 @@ footer .wrapper .service-tit li:nth-child(4) i {
 footer .wrapper .help {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0 ;
+  padding: 20px 0;
   border-bottom: 1px solid #ccc;
 }
 footer .wrapper .help .help-list p {
