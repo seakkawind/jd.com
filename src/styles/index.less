@@ -1455,6 +1455,110 @@ main {
         }
       }
     }
+    .recommend {
+      position: relative;
+      .recommend-tit {
+        text-align: center;
+        font-size: 2.5em;
+        height: 60px;
+        line-height: 60px;
+        margin-bottom: 20px;
+        &::after {
+          content: '';
+          position: absolute;
+          top: 5px;
+          left: 450px;
+          display: block;
+          width: 50px;
+          height: 50px;
+          background: url(../img/index/yinying.png) 22px center no-repeat;
+          background-size: 110%;
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          top: 5px;
+          right: 450px;
+          display: block;
+          width: 50px;
+          height: 50px;
+          background: url(../img/index/yinying.png)-28px center no-repeat;
+          background-size: 110%;
+        }
+      }
+      .more-list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .more-item {
+          position: relative;
+          margin-bottom: 10px;
+          background-color: #fff;
+          width: 230px;
+          height: 322px;
+          box-sizing: border-box;
+          &:hover {
+            .more-hover {
+              opacity: 1 !important;
+            }
+          }
+          .more-img {
+            padding: 40px;
+            padding-top: 30px;
+            img {
+              width: 150px;
+              height: 150px;
+            }
+          }
+          .more-info {
+            width: 190px;
+            height: 25px;
+            line-height: 25px;
+            padding: 0 20px;
+          }
+          .more-price {
+            padding: 30px 20px;
+            font-weight: bold;
+            color: #e1251b;
+            font-size: 0.8em;
+            .more-price-txt {
+              font-size: 1.8em;
+            }
+          }
+          .more-hover {
+            transition: all 0.4s ease;
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            bottom: 8px;
+            left: 0;
+            height: 66px;
+            background: linear-gradient(
+              180deg,
+              rgba(255, 255, 255, 0.8) 0,
+              white 35%,
+              white
+            );
+            .more-btn {
+              height: 28px;
+              width: 120px;
+              background-color: #333;
+              font-size: 12px;
+              color: #fff;
+              border-radius: 15px;
+              line-height: 28px;
+              text-align: center;
+              cursor: pointer;
+              margin: 0 auto;
+              margin-top: 18px;
+              &:hover {
+                background-color: #e1251b;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 footer {

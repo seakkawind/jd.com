@@ -1359,6 +1359,103 @@ main .wrapper .channel .chanel-list .big-2 {
 main .wrapper .channel .chanel-list .big-2 img {
   width: 290px;
 }
+main .wrapper .recommend {
+  position: relative;
+}
+main .wrapper .recommend .recommend-tit {
+  text-align: center;
+  font-size: 2.5em;
+  height: 60px;
+  line-height: 60px;
+  margin-bottom: 20px;
+}
+main .wrapper .recommend .recommend-tit::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 450px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: url(../img/index/yinying.png) 22px center no-repeat;
+  background-size: 110%;
+}
+main .wrapper .recommend .recommend-tit::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 450px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: url(../img/index/yinying.png) -28px center no-repeat;
+  background-size: 110%;
+}
+main .wrapper .recommend .more-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+main .wrapper .recommend .more-list .more-item {
+  position: relative;
+  margin-bottom: 10px;
+  background-color: #fff;
+  width: 230px;
+  height: 322px;
+  box-sizing: border-box;
+}
+main .wrapper .recommend .more-list .more-item:hover .more-hover {
+  opacity: 1 !important;
+}
+main .wrapper .recommend .more-list .more-item .more-img {
+  padding: 40px;
+  padding-top: 30px;
+}
+main .wrapper .recommend .more-list .more-item .more-img img {
+  width: 150px;
+  height: 150px;
+}
+main .wrapper .recommend .more-list .more-item .more-info {
+  width: 190px;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 20px;
+}
+main .wrapper .recommend .more-list .more-item .more-price {
+  padding: 30px 20px;
+  font-weight: bold;
+  color: #e1251b;
+  font-size: 0.8em;
+}
+main .wrapper .recommend .more-list .more-item .more-price .more-price-txt {
+  font-size: 1.8em;
+}
+main .wrapper .recommend .more-list .more-item .more-hover {
+  transition: all 0.4s ease;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  bottom: 8px;
+  left: 0;
+  height: 66px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0, white 35%, white);
+}
+main .wrapper .recommend .more-list .more-item .more-hover .more-btn {
+  height: 28px;
+  width: 120px;
+  background-color: #333;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 15px;
+  line-height: 28px;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 18px;
+}
+main .wrapper .recommend .more-list .more-item .more-hover .more-btn:hover {
+  background-color: #e1251b;
+}
 footer .wrapper .service-tit {
   display: flex;
   justify-content: space-between;

@@ -1,5 +1,4 @@
 @import '../css/reset.css';
-@import '../../dist/css/swiper.css';
 @import 'http://at.alicdn.com/t/font_2419230_zdd4b51zins.css';
 .wrapper {
   width: 1210px;
@@ -498,6 +497,19 @@ main {
           margin-bottom: 18px;
           width: 452px;
           height: 58px;
+          display: flex;
+          justify-content: space-between;
+          .spec-item {
+            height: 60px;
+            img {
+              width: 58px;
+              height: 58px;
+              border: 1px solid #fff;
+              &:hover {
+                border-color: #e1251b;
+              }
+            }
+          }
         }
         .preview-info {
           display: flex;
@@ -674,6 +686,7 @@ main {
               .btns {
                 width: 24px;
                 i {
+                  cursor: pointer;
                   background-color: #f1f1f1;
                   padding-top: 3px;
                   box-sizing: border-box;
@@ -708,6 +721,7 @@ main {
       }
     }
     .content {
+      padding-top: 50px;
       display: flex;
       justify-content: space-between;
       .aside {
@@ -811,6 +825,28 @@ main {
       .detail {
         width: 990px;
         .tab-main {
+          display: flex;
+          background-color: #f7f7f7;
+          border-bottom: 1px solid #e4393c;
+          li {
+            padding: 10px 25px;
+            font-size: 14px;
+            cursor: pointer;
+          }
+          .active {
+            background-color: #e4393c;
+            color: #fff;
+            cursor: default;
+          }
+        }
+        > div {
+          display: none;
+          img {
+            width: 100%;
+          }
+        }
+        .show {
+          display: block !important;
         }
       }
     }

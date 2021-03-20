@@ -1,4 +1,4 @@
-import { $ } from "./jquery.js"
+import { $ } from "./library/jquery.js"
 $('.code-left').hover(function(){
     $(this).animate({left:0},300,'linear',function(){
         $('.code-right').css('display','block');

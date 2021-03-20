@@ -1,4 +1,4 @@
-import { $ } from "./jquery.js"
+import { $ } from "./library/jquery.js"
 $('.next').on('click',function(){
     $('.phone-info').addClass('active');
     $('.account-info').removeClass('active');

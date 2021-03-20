@@ -1,4 +1,4 @@
-import { $ } from "./jquery.js"
+import { $ } from "./library/jquery.js"
 import Swiper from "../../dist/js/swiper.js"
 //轮播图
 let mainSwiper = new Swiper('.main-banner', {
@@ -121,4 +121,31 @@ $('.tabs-list>li').on('mouseover',function(){
 $('.p-tabs-l>li').on('mouseover',function(){
     $(this).addClass('hoverc').siblings().removeClass('hoverc');
     $('.p-tabs-b').eq($(this).index()).addClass('active').siblings().removeClass('active');
+});
+//动态渲染
+$.ajax({
+    type: "get",
+    url: "../../interface/getData.php",
+    dataType: "json",
+    success: function (res) {
+        let temp='';
+        res.forEach((elm,i)=>{
+            let picture = JSON.parse(elm.picture);
+            temp+=`<li class="more-item">
+            <a href="./details.html?id=${elm.id}">
+                <div class="more-img">
+                    <img src="${picture[0].src}" alt="">
+                </div>
+                <p class="more-info">${elm.title.slice(0,43)+'...'}</p>
+                <p class="more-price">￥<b class="more-price-txt">${elm.price}</b>.00</p>
+                <div class="more-hover">
+                <div class="more-btn">找相似</div>
+                </div>
+            </a>
+        </li>`;
+        });
+        for(let i = 0 ; i < 4 ; i++){
+            $('.more-list')[0].innerHTML+=temp;
+        }
+    }
 });

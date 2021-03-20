@@ -1,5 +1,4 @@
 @import '../css/reset.css';
-@import '../../dist/css/swiper.css';
 @import 'http://at.alicdn.com/t/font_2419230_zdd4b51zins.css';
 .wrapper {
   width: 1210px;
@@ -473,6 +472,19 @@ main .wrapper .product-intro .preview .spec-list {
   margin-bottom: 18px;
   width: 452px;
   height: 58px;
+  display: flex;
+  justify-content: space-between;
+}
+main .wrapper .product-intro .preview .spec-list .spec-item {
+  height: 60px;
+}
+main .wrapper .product-intro .preview .spec-list .spec-item img {
+  width: 58px;
+  height: 58px;
+  border: 1px solid #fff;
+}
+main .wrapper .product-intro .preview .spec-list .spec-item img:hover {
+  border-color: #e1251b;
 }
 main .wrapper .product-intro .preview .preview-info {
   display: flex;
@@ -651,6 +663,7 @@ main .wrapper .product-intro .iteminfo .choose .choose-btns .choose-amount .btns
   width: 24px;
 }
 main .wrapper .product-intro .iteminfo .choose .choose-btns .choose-amount .btns i {
+  cursor: pointer;
   background-color: #f1f1f1;
   padding-top: 3px;
   box-sizing: border-box;
@@ -679,6 +692,7 @@ main .wrapper .product-intro .iteminfo .choose .tips span {
   color: #ccc;
 }
 main .wrapper .content {
+  padding-top: 50px;
   display: flex;
   justify-content: space-between;
 }
@@ -770,6 +784,30 @@ main .wrapper .content .aside .sp-category .category-list .category-item .dd li 
 }
 main .wrapper .content .detail {
   width: 990px;
+}
+main .wrapper .content .detail .tab-main {
+  display: flex;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #e4393c;
+}
+main .wrapper .content .detail .tab-main li {
+  padding: 10px 25px;
+  font-size: 14px;
+  cursor: pointer;
+}
+main .wrapper .content .detail .tab-main .active {
+  background-color: #e4393c;
+  color: #fff;
+  cursor: default;
+}
+main .wrapper .content .detail > div {
+  display: none;
+}
+main .wrapper .content .detail > div img {
+  width: 100%;
+}
+main .wrapper .content .detail .show {
+  display: block !important;
 }
 footer .wrapper .service-tit {
   display: flex;
