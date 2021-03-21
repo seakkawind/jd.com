@@ -70,8 +70,7 @@ let minb = new Swiper('.minb', {
       prevEl: '.minb>.swiper-button-prev',
     },
 });
-var find = new Swiper ('.find-r', {
-    // loop: true, // 循环模式选项
+let find = new Swiper ('.find-r', {
     slidesPerView : 6,  
     draggable: true,
     speed:2500,
@@ -82,10 +81,20 @@ var find = new Swiper ('.find-r', {
       el: '.find-r .swiper-scrollbar',
     },
 });
+find.scrollbar.$dragEl.css({
+    'height':'10px',
+    'top':'-3px',
+    'opacity':'0'
+});
+find.scrollbar.$el.css('opacity','0');
 $('.find-r').hover(function(){
     find.autoplay.stop();
+    find.scrollbar.$dragEl.css('opacity','1');
+    find.scrollbar.$el.css('opacity','1');
     },function(){
     find.autoplay.start();
+    find.scrollbar.$dragEl.css('opacity','0');
+    find.scrollbar.$el.css('opacity','0');
 });
 let newb = new Swiper('.new-b', {
     loop: true,

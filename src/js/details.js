@@ -1,4 +1,5 @@
-import { $ } from "./library/jquery.js"
+import { $ } from "./library/jquery.js";
+import cookie from './library/cookie.js';
 //放大镜
 $('.pimg-box').on({
     'mouseenter': () => {
@@ -67,31 +68,62 @@ $.ajax({
         $('.sku-name>p').html(res.title);
         $('.jd-price>.price>b').html(res.price+'.00');
         $('.desciption-box').html(`<img src=${res.details} alt="">`);
-        let colortemp='';
+        let colortemp='',color='';
         JSON.parse(res.color).forEach(elm=>{
             colortemp+=`<li>${elm.color}</li>`;
         })
         $('#choose-color').html(colortemp).find('li').on('click',function(){
             $(this).addClass('clicked').siblings().removeClass('clicked');
+            color=$(this).text();
         });
 
-        let attrstemp='';
+        let attrstemp='',attrs='';
         JSON.parse(res.attrs).forEach(elm=>{
             attrstemp+=`<li>${elm.attrs}</li>`;
         })
         $('#choose-attr1').html(attrstemp).find('li').on('click',function(){
             $(this).addClass('clicked').siblings().removeClass('clicked');
+            attrs=$(this).text();
         });;
 
-        let versiontemp='';
+        let versiontemp='',version='';
         JSON.parse(res.version).forEach(elm=>{
             versiontemp+=`<li>${elm.attrs}</li>`;
         })
         $('#choose-attr2').html(versiontemp).find('li').on('click',function(){
             $(this).addClass('clicked').siblings().removeClass('clicked');
+            version=$(this).text();
         });;
+        //加入购物车，往cookie里添加数据
+        $('.add-cart').on('click',function(){
+            
+            if(color === ''||attrs === ''||version ===''){
+                alert('请选择好颜色和型号时再点击加入购物车');
+            }else{
+                addItem(res.id,color,attrs,version, $('#pieces').val());
+            }
+        });
     }
 });
+function addItem(id, color,attrs,version,num) {
+    let shop = cookie.get('shop');
+    let product = {id,color,attrs,version,num};
+    if (shop) {
+        shop = JSON.parse(shop);
+        // 判断当前的商品id在cookie数据中是否存在
+        if (shop.some(el => el.id === id)) {
+            shop.forEach(elm => {
+                elm.id === id ? elm.num = num : null;
+            });
+        } else {
+            shop.push(product);
+        }
+    } else { // 没有存cookie的情况
+        shop = []; // 初始化成数组
+        shop.push(product);
+    }
+    cookie.set('shop', JSON.stringify(shop), 1);
+}
 //增减数量
 
 $('.btn-add').on('click',function(){
