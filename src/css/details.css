@@ -479,12 +479,12 @@ main .wrapper .product-intro .preview .spec-list .spec-item {
   height: 60px;
 }
 main .wrapper .product-intro .preview .spec-list .spec-item img {
-  width: 58px;
-  height: 58px;
-  border: 1px solid #fff;
+  width: 56px;
+  height: 56px;
+  border: 2px solid #fff;
 }
-main .wrapper .product-intro .preview .spec-list .spec-item img:hover {
-  border-color: #e1251b;
+main .wrapper .product-intro .preview .spec-list .item-hover img {
+  border-color: #e1251b !important;
 }
 main .wrapper .product-intro .preview .preview-info {
   display: flex;

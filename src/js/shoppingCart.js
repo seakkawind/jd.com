@@ -1,10 +1,14 @@
 import { $ } from "./library/jquery.js";
 import cookie from './library/cookie.js';
 let shop = cookie.get('shop');
-
+if(cookie.get('username')){
+    $('.in-up').html(`<a href="#">${cookie.get('username')}</a>`);
+}
 if(shop){
     shop = JSON.parse(shop);
     let idlist = shop.map(elm => elm.id).join();
+    $('.cart-empty').addClass('empty');
+    $('.cart-box').removeClass('empty');
     $.ajax({
         type: "get",
         url: "../../interface/getItems.php",
@@ -54,16 +58,40 @@ if(shop){
             });
            
             let subtotal ={};//小计对象
+            //求和函数
+            function total(obj){
+                let total=0;
+                for(let key in obj){
+                    total+=obj[key];
+                }
+                $('.total-price').text('￥'+total+'.00'); 
+            }
+            //统计选中商品数量
+            function number(){
+                let num = Array.from($('.check-item')).filter(elm => elm.checked===true).length;
+                $('.amount-sum').text(num);
+            }
+            
             $('.cart-list').append(temp).find('.delete').on('click', function() {
                 let res = shop.filter(el => el.id != $(this).attr('data-id'));
                 cookie.set('shop', JSON.stringify(res), 1); // 将id不为被点击元素id的剩余元素从新写入cookie
                 location.reload();
             });
+            $('.number').text(Array.from($('.check-item')).length);
             Array.from($('.g-sum')).forEach(elm =>{
                 subtotal[elm.id]=0;
             });
-            console.log(subtotal)
-            
+            //删除选中的商品
+            $('.checked-remove').on('click',function(){
+                let res = Array.from($('.check-item')).filter(elm => elm.checked===true)
+                .map(elm => elm.id.slice(-1));
+                res.forEach(elm => {
+                   let result= shop.filter(el => el.id != elm);
+                   shop = result;
+                   cookie.set('shop', JSON.stringify(result), 1);
+                });
+                location.reload();
+            });
             //小计价格 跟随 数量变化
             $('.b-add').on('click', function(){
                 let id = this.id.slice(-1);
@@ -75,13 +103,10 @@ if(shop){
                 
                 if($('#check-item-'+id)[0].checked){
                     subtotal['sum-'+id]=num.val()*price;
-                    total(subtotal)
+                    total(subtotal);
                 }else{
                     subtotal['sum-'+id]=0;
                 }
-                
-                console.log(subtotal)
-
             });
             $('.b-sub').on('click', function(){
                 let id = this.id.slice(-1);
@@ -97,11 +122,10 @@ if(shop){
                 sum.text('￥'+num.val()*price+'.00');
                 if($('#check-item-'+id)[0].checked){
                     subtotal['sum-'+id]=num.val()*price;
-                    total(subtotal)
+                    total(subtotal);
                 }else{
                     subtotal['sum-'+id]=0;
                 }
-                console.log(subtotal)
             });
             //全选
             $('#select-all').on('click',function(){
@@ -109,40 +133,42 @@ if(shop){
                     $('.check-item').prop('checked',true);
                     Array.from($('.g-sum')).forEach(elm =>{
                         subtotal[elm.id]=parseInt(elm.textContent.slice(1,-3));
-                        
+                    $('.cart-item').addClass('item-seleted');
                     });
-                    total(subtotal)
-                    console.log(subtotal)
                 }else{
                     $('.check-item').prop('checked',false);
                     Array.from($('.g-sum')).forEach(elm =>{
                         subtotal[elm.id]=0;
                     });
-                    total(subtotal)
-                    console.log(subtotal)
+                    $('.cart-item').removeClass('item-seleted');
                 }
+                total(subtotal);
+                number();
             });
             //选中
             $('.check-item').on('click',function(){
+                let flag = Array.from($('.check-item')).every(elm => elm.checked===true);
                 let id = this.id.slice(-1);
                 let sum = parseInt( $('#sum-'+id).text().slice(1,-3));
+                if(flag){
+                    $('#select-all').prop('checked',true);
+                }else{
+                    $('#select-all').prop('checked',false);
+                }
                 if(this.checked===true){
                     subtotal['sum-'+id]=sum;
-                    total(subtotal)
+                    $(this).parents('.cart-item').addClass('item-seleted')
                 }else if(this.checked===false){
                     subtotal['sum-'+id]=0;
-                    total(subtotal)
+                    $(this).parents('.cart-item').removeClass('item-seleted')
                 }
-                console.log(subtotal)
+                total(subtotal);
+                number();
             });
-            //求和函数
-            function total(obj){
-                let total=0;
-                for(let key in obj){
-                    total+=obj[key];
-                }
-                $('.total-price').text('￥'+total+'.00'); 
-            }
+            
         }
     });
+}else{
+    $('.cart-empty').removeClass('empty');
+    $('.cart-box').addClass('empty');
 }

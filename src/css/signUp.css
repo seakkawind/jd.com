@@ -220,11 +220,14 @@ main .wrapper .end > button {
   width: 100px;
   height: 50px;
   margin: 40px auto;
+  border: none;
+  background-color: #e2231a;
+}
+main .wrapper .end > button a {
   color: #fff;
   font-size: 1.4em;
   font-weight: bolder;
-  border: none;
-  background-color: #e2231a;
+  text-decoration: none;
 }
 footer .wrapper .links {
   display: flex;

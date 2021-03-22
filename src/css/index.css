@@ -7,7 +7,6 @@
 }
 body {
   background-color: #f4f4f4;
-  position: relative;
 }
 a:hover {
   color: #e1251b;
@@ -50,6 +49,22 @@ a:hover img {
 }
 .swiper-button-next:hover {
   background-color: rgba(0, 0, 0, 0.4);
+}
+@keyframes searchTop {
+  0% {
+    top: -50px;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes eleShow {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 75px;
+  }
 }
 header {
   border-bottom: 1px solid #ccc;
@@ -324,36 +339,66 @@ header > .wrapper .right {
   padding-top: 20px;
   width: 800px;
 }
+header > .wrapper .right .search-fix {
+  padding-top: 10px;
+  animation: searchTop 0.5s ease-in-out;
+  position: fixed !important;
+  z-index: 100;
+  width: 100% !important;
+  justify-content: center;
+  border-bottom: 2px solid #e1251b;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+}
+header > .wrapper .right .search-fix .search-logo {
+  display: block !important;
+}
+header > .wrapper .right .search-fix .search-logo img {
+  width: 100px;
+  height: 30px;
+}
 header > .wrapper .right .right-top {
-  overflow: hidden;
+  width: 1190px;
+  display: flex;
+}
+header > .wrapper .right .right-top .search-logo {
+  display: none;
+  position: relative;
+  top: -10px;
+}
+header > .wrapper .right .right-top .search-logo img {
+  width: 100px;
+  height: 40px;
 }
 header > .wrapper .right .right-top .search-box {
   border: 2px solid #e1251b;
   margin-left: 65px;
-  float: left;
   display: flex;
+  height: 30px;
   position: relative;
 }
 header > .wrapper .right .right-top .search-box > input {
   border: none;
   text-indent: 2em;
   width: 485px;
-  height: 30px;
+  height: 28px;
 }
 header > .wrapper .right .right-top .search-box > span {
   position: absolute;
   width: 40px;
-  height: 40px;
+  height: 30px;
   background: url(../img/index/camera.png) no-repeat;
   right: 50px;
-  top: 6px;
+  top: 5px;
 }
 header > .wrapper .right .right-top .search-box > span:hover {
   background-image: url(../img/index/camera-red.png);
 }
 header > .wrapper .right .right-top .search-box > i {
-  width: 60px;
+  width: 61px;
   height: 30px;
+  border: 1px solid #e1251b;
   background: url(../img/index/enlarge.png) 20px 5px no-repeat;
   background-size: 36%;
   background-color: #e1251b;
@@ -362,7 +407,6 @@ header > .wrapper .right .right-top .search-box > i:hover {
   background-color: #c81623;
 }
 header > .wrapper .right .right-top .shopping {
-  float: left;
   background-color: #fff;
   margin: 0 20px;
   height: 32px;
@@ -621,6 +665,7 @@ main .wrapper .face .face-left .service > ul > li:nth-child(7n) i {
 main .wrapper .spike {
   height: 260px;
   display: flex;
+  position: relative;
 }
 main .wrapper .spike .countdown {
   box-sizing: border-box;
@@ -771,6 +816,66 @@ main .wrapper .spike .spike-banner .minb .swiper-pagination-bullet {
 }
 main .wrapper .spike .spike-banner .minb .swiper-pagination-bullet-active {
   background-color: #e1251b;
+}
+main .wrapper .spike .elevator_fix {
+  position: fixed !important;
+  right: 190px !important;
+  animation: eleShow 0.5s ease both;
+}
+main .wrapper .spike .elevator_fix .back-top {
+  display: block !important;
+}
+main .wrapper .spike .elevator_list {
+  position: absolute;
+  top: 0;
+  right: -70px;
+  background-color: #fff;
+  width: 58px;
+}
+main .wrapper .spike .elevator_list .active a {
+  color: #e1251b;
+}
+main .wrapper .spike .elevator_list .active:hover {
+  background-color: #e1251b;
+}
+main .wrapper .spike .elevator_list .active:hover a {
+  color: #fff;
+}
+main .wrapper .spike .elevator_list .elevator_item {
+  position: relative;
+  height: 58px;
+  box-sizing: border-box;
+  font-size: 1.2em;
+  text-align: center;
+  padding: 10px;
+  transition: all 0.3s;
+}
+main .wrapper .spike .elevator_list .elevator_item::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(270deg, white, #eeeeee, #eeeeee, white);
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+}
+main .wrapper .spike .elevator_list .elevator_item:hover {
+  background-color: #e1251b;
+}
+main .wrapper .spike .elevator_list .elevator_item:hover a {
+  color: #fff;
+}
+main .wrapper .spike .elevator_list .back-top {
+  display: none;
+}
+main .wrapper .spike .elevator_list .back-top a {
+  color: #e1251b;
+}
+main .wrapper .spike .elevator_list .back-top:hover {
+  background-color: #e1251b;
+}
+main .wrapper .spike .elevator_list .back-top:hover a {
+  color: #fff;
 }
 main .wrapper .contm {
   height: 340px;
@@ -1587,36 +1692,4 @@ footer .wrapper .copyright-auth li:nth-child(5) i {
 }
 footer .wrapper .copyright-auth li:nth-child(6) i {
   background-position: -205px -148px;
-}
-.elevator_list {
-  position: absolute;
-  top: 700px;
-  right: 700px;
-  transform: translateX(650px);
-  background-color: #fff;
-  width: 58px;
-}
-.elevator_list .elevator_item {
-  position: relative;
-  height: 58px;
-  box-sizing: border-box;
-  font-size: 1.2em;
-  text-align: center;
-  padding: 10px;
-  transition: all 0.3s;
-}
-.elevator_list .elevator_item::after {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(270deg, white, #eeeeee, #eeeeee, white);
-  position: absolute;
-  bottom: 0px;
-  left: 10px;
-}
-.elevator_list .elevator_item:hover {
-  background-color: #e1251b;
-}
-.elevator_list .elevator_item:hover a {
-  color: #fff;
 }

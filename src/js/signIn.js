@@ -19,3 +19,12 @@ $('.btn-right').on('click',function(){
     $(this).css('color','#e4393c');
     $('.btn-left').css('color','#999');
 });
+
+// $('.submit').on('submit',function(){
+//     $.get("../../interface/signIn.php", {usrename:'',password:''},
+//         function (data, textStatus, jqXHR) {
+            
+//         },
+//         "dataType"
+//     );
+// });

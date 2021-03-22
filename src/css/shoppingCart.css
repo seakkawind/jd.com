@@ -300,10 +300,10 @@ main .wrapper {
   padding-top: 40px;
 }
 main .wrapper .empty {
-  display: block !important;
+  display: none !important;
 }
 main .wrapper .cart-empty {
-  display: none;
+  display: block;
   height: 98px;
   padding: 80px 0 120px;
   color: #333;
@@ -322,6 +322,9 @@ main .wrapper .cart-empty .message > p {
 main .wrapper .cart-empty .message > a {
   color: #005ea7;
   text-decoration: underline;
+}
+main .wrapper .cart-box {
+  padding-bottom: 100px;
 }
 main .wrapper .cart-box .cart-title {
   color: #e1251b;
@@ -479,6 +482,9 @@ main .wrapper .cart-box .settlement .left {
   padding-left: 50px;
   height: 50px;
   line-height: 50px;
+}
+main .wrapper .cart-box .settlement .left .checked-remove {
+  cursor: pointer;
 }
 main .wrapper .cart-box .settlement .right {
   display: flex;

@@ -1,5 +1,6 @@
 import { $ } from "./library/jquery.js";
 import cookie from './library/cookie.js';
+let shop = cookie.get('shop');
 //放大镜
 $('.pimg-box').on({
     'mouseenter': () => {
@@ -34,9 +35,16 @@ $('.fold').on('click',function(){
         $(this).parent().parent().children(1).toggleClass('active');
     }
 });
+if(shop){
+    $('#number').text(JSON.parse(shop).length);
+}else{
+    $('#number').text(0);
+}
+ if(cookie.get('username')){
+     $('.in-up').html(`<a href="#">${cookie.get('username')}</a>`);
+ }
 //数据动态渲染
 let id = location.search.split('=')[1];
-console.log(id);
 $.ajax({
     type: "get",
     url: "../../interface/getItem.php",
@@ -64,10 +72,12 @@ $.ajax({
         $('.spec-list').append(tempimg).find('.spec-item').on('mouseover',function(){
             $('.pimg-box>img')[0].src=$(this).children()[0].src;
             $('.enlarge>img')[0].src=$(this).children()[0].src;
+            $(this).addClass('item-hover').siblings().removeClass('item-hover');
         });
         $('.sku-name>p').html(res.title);
         $('.jd-price>.price>b').html(res.price+'.00');
         $('.desciption-box').html(`<img src=${res.details} alt="">`);
+
         let colortemp='',color='';
         JSON.parse(res.color).forEach(elm=>{
             colortemp+=`<li>${elm.color}</li>`;
@@ -101,6 +111,8 @@ $.ajax({
                 alert('请选择好颜色和型号时再点击加入购物车');
             }else{
                 addItem(res.id,color,attrs,version, $('#pieces').val());
+                alert('商品已加入购物车');
+                location.reload();
             }
         });
     }

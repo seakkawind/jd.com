@@ -1,5 +1,7 @@
-import { $ } from "./library/jquery.js"
-import Swiper from "../../dist/js/swiper.js"
+import { $ } from "./library/jquery.js";
+import Swiper from "../../dist/js/swiper.js";
+import cookie from './library/cookie.js';
+let shop = cookie.get('shop');
 //轮播图
 let mainSwiper = new Swiper('.main-banner', {
     loop: true,
@@ -131,6 +133,17 @@ $('.p-tabs-l>li').on('mouseover',function(){
     $(this).addClass('hoverc').siblings().removeClass('hoverc');
     $('.p-tabs-b').eq($(this).index()).addClass('active').siblings().removeClass('active');
 });
+if(shop){
+    $('#number').text(JSON.parse(shop).length);
+}else{
+    $('#number').text(0);
+}
+ if(cookie.get('username')){
+     $('.in-up').html(`<a href="#">${cookie.get('username')}</a>`);
+     $('.hi h3').text(`Hi~,${cookie.get('username')}`);
+     $('.hi>p').html(`<a href="../html/signIn.html">退出</a>|<a href="../html/signIn.html">切换</a>`);
+ }
+
 //动态渲染
 $.ajax({
     type: "get",
@@ -158,3 +171,68 @@ $.ajax({
         }
     }
 });
+//滚动条
+$('.elevator_item').on('click', function() {
+    let elm = $(`.${$(this).attr('title')}`);
+    let top = parseInt(elm.offset().top)-75 ;
+    $('html').animate({
+        scrollTop: top
+    }, 600);
+});
+$(window).on('scroll', function() {
+    let top = $(document).scrollTop();
+    let spike = parseInt($('.spike').offset().top)-75;
+    let contm = parseInt($('.contm').offset().top)-75;
+    let channel = parseInt($('.channel').offset().top)-75;
+    let recommend = parseInt($('.recommend').offset().top)-75;
+    if(top >= 700){
+        $('.right-top').addClass('search-fix');
+        $('.elevator_list').addClass('elevator_fix');
+        
+    }else{
+        $('.right-top').removeClass('search-fix');
+        $('.elevator_list').removeClass('elevator_fix');
+    }
+    if(top < spike){
+        $('.elevator_item').removeClass('active');
+    }else if(top >= spike & top <contm){
+        $('.elevator_item').removeClass('active').eq(0).addClass('active');
+    } else if(top >= contm & top <channel){
+        $('.elevator_item').removeClass('active').eq(1).addClass('active');
+    } else if(top >= channel & top <recommend){
+        $('.elevator_item').removeClass('active').eq(2).addClass('active');
+    } else if(top >= recommend){
+        $('.elevator_item').removeClass('active').eq(3).addClass('active');
+    }  
+});
+//倒计时
+function countDown() {
+    let nowDate = new Date();
+    let endDate = new Date(`${nowDate.getFullYear()}/${nowDate.getMonth()+1}/${nowDate.getDate()+1} 00:00:00`);
+    let diffTime = parseInt((endDate.getTime() - nowDate.getTime()) / 1000);
+    let hour, minute, second;
+    second = diffTime % 60;
+    minute = parseInt(diffTime / 60) % 60;
+    hour = parseInt(diffTime / 60 / 60);
+    let h = $('.hours');
+    let m = $('.minutes');
+    let s = $('.seconds');
+    if (second < 10) {
+        s.text("0" + second);
+    } else {
+        s.text(second);
+    }
+    if (minute < 10) {
+        m.text("0" + minute);
+    } else {
+        m.text(minute);
+    }
+    if (hour < 10) {
+        h.text("0" + hour);
+    } else {
+        h.text(hour);
+    }
+
+    setTimeout(countDown, 1000);
+}
+countDown();
