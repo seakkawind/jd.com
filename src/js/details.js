@@ -43,6 +43,33 @@ if(shop){
  if(cookie.get('username')){
      $('.in-up').html(`<a href="#">${cookie.get('username')}</a>`);
  }
+ //模糊查询
+ $('#seacrh').on('input',function(){
+    let content = this.value;
+    $.ajax({
+        type: "post",
+        url: "../../interface/search.php",
+        data: {content},
+        dataType: "json",
+        success: function (res) {
+            if(res.length >0){
+                $('.search-helper').css('display','block');
+            }else  if(res.length === 0){
+                $('.search-helper').css('display','none');
+            }
+            let temp = '';
+            res.forEach(elm => {
+                temp += `<li><a href="../html/details.html?id=${elm.id}">${elm.title}</a></li>`
+            });
+            $('.search-helper').html(temp);
+            if(content === ''){
+                $('.search-helper').html('');
+                $('.search-helper').css('display','none');
+            }
+            
+        }
+    });
+});
 //数据动态渲染
 let id = location.search.split('=')[1];
 $.ajax({

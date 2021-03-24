@@ -361,6 +361,7 @@ header > .wrapper .right .search-fix .search-logo img {
 header > .wrapper .right .right-top {
   width: 1190px;
   display: flex;
+  position: relative;
 }
 header > .wrapper .right .right-top .search-logo {
   display: none;
@@ -402,6 +403,7 @@ header > .wrapper .right .right-top .search-box > i {
   background: url(../img/index/enlarge.png) 20px 5px no-repeat;
   background-size: 36%;
   background-color: #e1251b;
+  cursor: pointer;
 }
 header > .wrapper .right .right-top .search-box > i:hover {
   background-color: #c81623;
@@ -443,6 +445,28 @@ header > .wrapper .right .right-top .shopping > span {
 }
 header > .wrapper .right .right-top .shopping > span > a {
   color: #e1251b;
+}
+header > .wrapper .right .right-top .search-helper {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  left: 65px;
+  top: 35px;
+  width: 488px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+header > .wrapper .right .right-top .search-helper li {
+  padding: 1px 6px;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+header > .wrapper .right .right-top .search-helper li:hover {
+  background-color: #ccc;
 }
 header > .wrapper .right .text {
   margin-left: 70px;

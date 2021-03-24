@@ -277,7 +277,8 @@ header > .wrapper .right {
   padding-left: 30px;
 }
 header > .wrapper .right .right-top {
-  overflow: hidden;
+  display: flex;
+  position: relative;
 }
 header > .wrapper .right .right-top .search-box {
   margin-left: 65px;
@@ -301,6 +302,28 @@ header > .wrapper .right .right-top .search-box > i {
 }
 header > .wrapper .right .right-top .search-box > i:nth-child(3) {
   background-color: #474e5c;
+}
+header > .wrapper .right .right-top .search-helper {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  left: 65px;
+  top: 35px;
+  width: 488px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+header > .wrapper .right .right-top .search-helper li {
+  padding: 1px 6px;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+header > .wrapper .right .right-top .search-helper li:hover {
+  background-color: #ccc;
 }
 header > .wrapper .right .shopping {
   float: left;

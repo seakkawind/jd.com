@@ -378,6 +378,7 @@ header {
       .right-top {
         width: 1190px;
         display: flex;
+        position: relative;
         .search-logo {
           display: none;
           position: relative;
@@ -417,6 +418,7 @@ header {
             background: url(../img/index/enlarge.png) 20px 5px no-repeat;
             background-size: 36%;
             background-color: #e1251b;
+            cursor: pointer;
             &:hover {
               background-color: #c81623;
             }
@@ -457,6 +459,28 @@ header {
             padding-top: 3px;
             > a {
               color: #e1251b;
+            }
+          }
+        }
+        .search-helper {
+          display: none;
+          position: absolute;
+          z-index: 100;
+          left: 65px;
+          top: 35px;
+          width: 488px;
+          border: 1px solid #ccc;
+          background-color: #fff;
+          box-shadow: 1px 2px 1px rgb(0 0 0 / 20%);
+          li {
+            padding: 1px 6px;
+            line-height: 24px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+            &:hover {
+              background-color: #ccc;
             }
           }
         }

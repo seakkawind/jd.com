@@ -1,7 +1,9 @@
 import { $ } from "./library/jquery.js";
 import Swiper from "../../dist/js/swiper.js";
 import cookie from './library/cookie.js';
+import  './library/jquery.lazyload.js';
 let shop = cookie.get('shop');
+
 //轮播图
 let mainSwiper = new Swiper('.main-banner', {
     loop: true,
@@ -156,7 +158,7 @@ $.ajax({
             temp+=`<li class="more-item">
             <a href="./details.html?id=${elm.id}">
                 <div class="more-img">
-                    <img src="${picture[0].src}" alt="">
+                    <img class="lazy" data-original="${picture[0].src}" alt="">
                 </div>
                 <p class="more-info">${elm.title.slice(0,43)+'...'}</p>
                 <p class="more-price">￥<b class="more-price-txt">${elm.price}</b>.00</p>
@@ -169,8 +171,48 @@ $.ajax({
         for(let i = 0 ; i < 4 ; i++){
             $('.more-list')[0].innerHTML+=temp;
         }
+        $("img.lazy").lazyload({
+            effect: "fadeIn", // 载入使用何种效果
+            threshold: 300, // 提前开始加载
+          }); 
     }
 });
+//模糊查询
+$('#seacrh').on('input',function(){
+    let content = this.value;
+    $.ajax({
+        type: "post",
+        url: "../../interface/search.php",
+        data: {content},
+        dataType: "json",
+        success: function (res) {
+            if(res.length >0){
+                $('.search-helper').css('display','block');
+            }else  if(res.length === 0){
+                $('.search-helper').css('display','none');
+            }
+            let temp = '';
+            res.forEach(elm => {
+                temp += `<li title="${elm.id}" ><a href="../html/details.html?id=${elm.id}">${elm.title}</a></li>`
+            });
+            $('.search-helper').html(temp);
+            if(content === ''){
+                $('.search-helper').html('');
+                $('.search-helper').css('display','none');
+            }
+            $('#search').on('click',function(){
+                let id = $('.search-helper').children('li:first')[0].title;
+                location.href="../html/details.html?id="+id;
+            });
+            $('#seacrh').on('keydown',function(ev){
+                if(ev.keyCode == 13){
+                    let id = $('.search-helper').children('li:first')[0].title;
+                    location.href="../html/details.html?id="+id;
+                }
+            });
+        }
+    });
+})
 //滚动条
 $('.elevator_item').on('click', function() {
     let elm = $(`.${$(this).attr('title')}`);
