@@ -4,7 +4,42 @@ let shop = cookie.get('shop');
 if(cookie.get('username')){
     $('.in-up').html(`<a href="#">${cookie.get('username')}</a>`);
 }
-
+//模糊查询
+$('#search').on('input',function(){
+    let content = this.value;
+    $.ajax({
+        type: "post",
+        url: "../../interface/search.php",
+        data: {content},
+        dataType: "json",
+        success: function (res) {
+            if(res.length >0){
+                $('.search-helper').css('display','block');
+            }else  if(res.length === 0){
+                $('.search-helper').css('display','none');
+            }
+            let temp = '';
+            res.forEach(elm => {
+                temp += `<li title="${elm.id}" ><a href="../html/details.html?id=${elm.id}">${elm.title}</a></li>`
+            });
+            $('.search-helper').html(temp);
+            if(content === ''){
+                $('.search-helper').html('');
+                $('.search-helper').css('display','none');
+            }
+            $('#search-btn').on('click',function(){
+                let id = $('.search-helper').children('li:first')[0].title;
+                location.href="../html/details.html?id="+id;
+            });
+            $('#search').on('keydown',function(ev){
+                if(ev.keyCode == 13){
+                    let id = $('.search-helper').children('li:first')[0].title;
+                    location.href="../html/details.html?id="+id;
+                }
+            });
+        }
+    });
+});
 if(shop && shop!='[]'){
     shop = JSON.parse(shop);
     let idlist = shop.map(elm => elm.id).join();
@@ -59,6 +94,9 @@ if(shop && shop!='[]'){
             });
            
             let subtotal ={};//小计对象
+            Array.from($('.g-sum')).forEach(elm =>{
+                subtotal[elm.id]=0;//建立对象
+            });
             //求和函数
             function total(obj){
                 let total=0;
@@ -79,14 +117,14 @@ if(shop && shop!='[]'){
                 location.reload();
             });
             $('.number').text(Array.from($('.check-item')).length);
-            Array.from($('.g-sum')).forEach(elm =>{
-                subtotal[elm.id]=0;
-            });
+
+            
             //删除选中的商品
             $('.checked-remove').on('click',function(){
-                let res = Array.from($('.check-item')).filter(elm => elm.checked===true)
-                .map(elm => elm.id.slice(-1));
-                res.forEach(elm => {
+                Array.from($('.check-item'))
+                .filter(elm => elm.checked===true)
+                .map(elm => elm.id.slice(-1))
+                .forEach(elm => {
                    let result= shop.filter(el => el.id != elm);
                    shop = result;
                    cookie.set('shop', JSON.stringify(result), 1);

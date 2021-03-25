@@ -293,6 +293,28 @@ header > .wrapper .search-box > i {
   text-align: center;
   line-height: 34px;
 }
+header > .wrapper .search-box .search-helper {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  left: 0px;
+  top: 55px;
+  width: 300px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+header > .wrapper .search-box .search-helper li {
+  padding: 1px 6px;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+header > .wrapper .search-box .search-helper li:hover {
+  background-color: #ccc;
+}
 main {
   background-color: #fff;
 }
