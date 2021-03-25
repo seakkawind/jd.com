@@ -4,7 +4,8 @@ let shop = cookie.get('shop');
 if(cookie.get('username')){
     $('.in-up').html(`<a href="#">${cookie.get('username')}</a>`);
 }
-if(shop){
+
+if(shop && shop!='[]'){
     shop = JSON.parse(shop);
     let idlist = shop.map(elm => elm.id).join();
     $('.cart-empty').addClass('empty');
@@ -92,7 +93,17 @@ if(shop){
                 });
                 location.reload();
             });
-            //小计价格 跟随 数量变化
+            //定时器监听input框内容
+            Array.from($('.num')).forEach(elm=>{
+                let id = elm.id.slice(-1);
+                setInterval(function(){
+                    if(parseInt(elm.value)===1){
+                        $('#sub-'+id).css({'cursor':'not-allowed','color':'#ccc'});
+                    }else{
+                        $('#sub-'+id).css({'cursor':'pointer','color':'black'});
+                    }
+                },100);
+            })
             $('.b-add').on('click', function(){
                 let id = this.id.slice(-1);
                 let num = $('#'+this.id).siblings('input');
@@ -116,7 +127,6 @@ if(shop){
                 if(parseInt(num.val())===1){
                     $('#'+this.id).css({'cursor':'not-allowed','color':'#ccc'});
                 }else{
-                    $('#'+this.id).css({'cursor':'pointer','color':'black'});
                     num.val(parseInt(num.val())-1);
                 }
                 sum.text('￥'+num.val()*price+'.00');

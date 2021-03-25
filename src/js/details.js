@@ -44,7 +44,7 @@ if(shop){
      $('.in-up').html(`<a href="#">${cookie.get('username')}</a>`);
  }
  //模糊查询
- $('#seacrh').on('input',function(){
+ $('#search').on('input',function(){
     let content = this.value;
     $.ajax({
         type: "post",
@@ -59,14 +59,23 @@ if(shop){
             }
             let temp = '';
             res.forEach(elm => {
-                temp += `<li><a href="../html/details.html?id=${elm.id}">${elm.title}</a></li>`
+                temp += `<li title="${elm.id}" ><a href="../html/details.html?id=${elm.id}">${elm.title}</a></li>`
             });
             $('.search-helper').html(temp);
             if(content === ''){
                 $('.search-helper').html('');
                 $('.search-helper').css('display','none');
             }
-            
+            $('#search-btn').on('click',function(){
+                let id = $('.search-helper').children('li:first')[0].title;
+                location.href="../html/details.html?id="+id;
+            });
+            $('#search').on('keydown',function(ev){
+                if(ev.keyCode == 13){
+                    let id = $('.search-helper').children('li:first')[0].title;
+                    location.href="../html/details.html?id="+id;
+                }
+            });
         }
     });
 });
@@ -78,9 +87,9 @@ $.ajax({
     data: { id },
     dataType: "json",
     success: function (res) {
-        console.log(res)
         let picture = JSON.parse(res.picture);
         $('.pimg-box>img')[0].src=picture[0].src;
+        $('.enlarge>img')[0].src=picture[0].src;
         let tempimg=`<li class="spec-item">
         <img src="${picture[0].src}" alt="">
     </li>
@@ -101,6 +110,7 @@ $.ajax({
             $('.enlarge>img')[0].src=$(this).children()[0].src;
             $(this).addClass('item-hover').siblings().removeClass('item-hover');
         });
+        $('.spec-item:first').addClass('item-hover');
         $('.sku-name>p').html(res.title);
         $('.jd-price>.price>b').html(res.price+'.00');
         $('.desciption-box').html(`<img src=${res.details} alt="">`);
@@ -164,7 +174,13 @@ function addItem(id, color,attrs,version,num) {
     cookie.set('shop', JSON.stringify(shop), 1);
 }
 //增减数量
-
+setInterval(function(){
+    if(parseInt($('#pieces').val())===1){
+        $('.btn-reduce').css({'cursor':'not-allowed','color':'#ccc'});
+    }else{
+        $('.btn-reduce').css({'cursor':'pointer','color':'black'});
+    }
+},100);
 $('.btn-add').on('click',function(){
     $('#pieces').val(parseInt($('#pieces').val())+1);
 });

@@ -178,7 +178,7 @@ $.ajax({
     }
 });
 //模糊查询
-$('#seacrh').on('input',function(){
+$('#search').on('input',function(){
     let content = this.value;
     $.ajax({
         type: "post",
@@ -200,11 +200,11 @@ $('#seacrh').on('input',function(){
                 $('.search-helper').html('');
                 $('.search-helper').css('display','none');
             }
-            $('#search').on('click',function(){
+            $('#search-btn').on('click',function(){
                 let id = $('.search-helper').children('li:first')[0].title;
                 location.href="../html/details.html?id="+id;
             });
-            $('#seacrh').on('keydown',function(ev){
+            $('#search').on('keydown',function(ev){
                 if(ev.keyCode == 13){
                     let id = $('.search-helper').children('li:first')[0].title;
                     location.href="../html/details.html?id="+id;
@@ -212,7 +212,7 @@ $('#seacrh').on('input',function(){
             });
         }
     });
-})
+});
 //滚动条
 $('.elevator_item').on('click', function() {
     let elm = $(`.${$(this).attr('title')}`);
